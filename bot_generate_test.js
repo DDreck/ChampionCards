@@ -1,4 +1,5 @@
 require("dotenv").config();
+const { error } = require("console");
 const Discord = require("discord.js");
 const { EmbedBuilder } = require("discord.js");
 const { Client, GatewayIntentBits } = require("discord.js");
@@ -20,60 +21,27 @@ client.on("error", (error) => {
 });
 client.on("messageCreate", async (message) => {
   if (message.content === "!cd") {
-    // Generate 3 random values (for testing)
-    //const value1 = Math.floor(Math.random() * 100);
-    //const value2 = Math.floor(Math.random() * 100);
-    //const value3 = Math.floor(Math.random() * 100);
 
-    //TODO send request to generate 3 cards
+    //TODO add timer for each user before they can grab or drop cards
 
+    //TODO send http request to generate 3 cards
+
+    //TESTING: STANDARD DEFAULT LINKS THAT SHOULD BE REMOVED IN THE FUTURE, HARD CODED
+    var test_url_1 = "https://cdn.discordapp.com";
+    var test_image_url_1 = "https://cdn.discordapp.com/attachments/1106538960311828574/1106644762091585628/image.png";
+    var test_image_url_2 = "https://cdn.discordapp.com/attachments/1106538960311828574/1106644803715878923/image.png";
 
     //test create embed with multiple images
-    let embed1 = new EmbedBuilder().setTitle('Choose a Card').setColor("Red").setURL('https://cdn.discordapp.com').setImage('https://cdn.discordapp.com/attachments/1106538960311828574/1106644762091585628/image.png')
-    let embed2 = new EmbedBuilder().setURL('https://cdn.discordapp.com').setImage('https://cdn.discordapp.com/attachments/1106538960311828574/1106644803715878923/image.png')
-    //let embed3 = new EmbedBuilder().setURL('https://cdn.discordapp.com').setImage('https://cdn.discordapp.com/attachments/1106538960311828574/1106644833080189069/image.png')
-    //let embed4 = new EmbedBuilder().setURL('https://cdn.discordapp.com').setImage('https://cdn.discordapp.com/attachments/1106538960311828574/1106644833080189069/image.png')
+    let embed1 = new EmbedBuilder().setTitle('Choose a Card').setColor("Red").setURL(test_url_1).setImage(test_image_url_1)
+    let embed2 = new EmbedBuilder().setURL(test_url_1).setImage(test_image_url_2)
 
-
-    const sentMessage = await message.channel.send({ embeds: [embed1, embed2]
-        
-    //   embeds: [
-    //     new EmbedBuilder()
-    //       .setColor("Red")
-    //       .setTitle("Choose a card")
-    //       .addFields(
-    //         {
-    //           name: "Card 1",
-    //           value: value1.toString(),
-    //         }
-    //       )
-    //       .setURL('https://cdn.discordapp.com').setImage('https://cdn.discordapp.com/attachments/1106538960311828574/1106644762091585628/image.png')
-    //       .addFields(
-    //         {
-    //           name: "Card 2",
-    //           value: value2.toString(),
-    //         }
-    //       )
-    //       .setURL('https://cdn.discordapp.com').setImage('https://cdn.discordapp.com/attachments/1106538960311828574/1106644762091585628/image.png')
-    //       .addFields(
-    //         {
-    //           name: "Card 3",
-    //           value: value3.toString(),
-    //         }
-    //       )
-    //       .setURL('https://cdn.discordapp.com').setImage('https://cdn.discordapp.com/attachments/1106538960311828574/1106644762091585628/image.png')
-    //   ],
-      
-      
-    });
+    const sentMessage = await message.channel.send({ embeds: [embed1, embed2] });
 
 
     // React to it
 
     await sentMessage.react("1️⃣");
     await sentMessage.react("2️⃣");
-    //await sentMessage.react("3️⃣");
-    //await sentMessage.react("4️⃣");
 
     // Create the collector filter
     const collectorFilter = (reaction, user) => {
@@ -91,16 +59,36 @@ client.on("messageCreate", async (message) => {
 
     // Log the collected reactions
     collector.on("collect", (reaction, user) => {
-      console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
+      console.log(`Collected ${reaction.emoji.name}  from ${user.tag}`);
     // Display confirmation message here
-    message.channel.send(`${user} Grabbed Card ${reaction.emoji.name}!`)
+    message.channel.send(`${user} Grabbed Card ${reaction.emoji.name} !`)
+    
+    //convert emoji to integer "selection"
+    var selection;
+    switch( reaction.emoji.name ) {
+        case '1️⃣':
+            selection = 1;
+            break;
+        case '2️⃣':
+            selection = 2;
+            break;
+        default:
+            selection = null;
+    }
+
+    //store selection and user id to array
+    var selectionArray = [user.id, selection]
+
+    //log selectionArray
+    console.log(selectionArray);
+
+    //TODO: send variable selectionArray to function to give card to player
+
     });
 
 
     collector.on("end", (collected) => {
         console.log(`Collected ${collected.size} items`);
-
-
     });
 
     
