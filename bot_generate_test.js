@@ -43,9 +43,9 @@ client.on("messageCreate", async (message) => {
     await sentMessage.react("1️⃣");
     await sentMessage.react("2️⃣");
 
-    // Create the collector filter
+    // Create the collector filter TODO FIX BUG THAT ALLOWS BOT TO COLLECT OWN REACTION
     const collectorFilter = (reaction, user) => {
-      return ['1️⃣', '2️⃣'].includes(reaction.emoji.name) && !user.bot;
+      return ['1️⃣', '2️⃣'].includes(reaction.emoji.name) && !user.bot && user.id != '1106538341194797066';
     };
 
     // Create the collector 
