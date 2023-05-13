@@ -12,6 +12,8 @@ const client = new Client({
     GatewayIntentBits.GuildMembers,
   ],
 });
+const cards = require('/Champion Cards Bot/cardgeneration.js');
+
 
 client.once("ready", () => {
   console.log("BOT IS ONLINE"); //message when bot is online
@@ -25,6 +27,32 @@ client.on("messageCreate", async (message) => {
     //TODO add timer for each user before they can grab or drop cards
 
     //TODO send http request to generate 3 cards
+
+
+    //sends request to cardgeneration.js to generate 2 cards
+    const { card1, card2 } = cards.generateRandomCards();
+
+    //logs the 2 cards generated
+    console.log(`Card 1: ${JSON.stringify(card1)}`);
+    console.log(`Card 2: ${JSON.stringify(card2)}`);
+
+   // Find the values of card 1
+      var champion1 = card1.find(card => card.category === 'champion')?.value;
+      var skillTierID1 = card1.find(card => card.category === 'skillTier')?.value;
+      var cardID1 = card1.find(card => card.category === 'ID')?.value;
+      var printNumber1 = card1.find(card => card.category === 'printNumber')?.value;
+
+    console.log(`Card 1 values: \nChampionID: ` + champion1 + '\nSkillTierID: ' + skillTierID1 + '\nCardID: ' + cardID1 + '\nPrintNumber: ' + printNumber1);
+    message.channel.send(`Card 1 values: \nChampionID: ` + champion1 + '\nSkillTierID: ' + skillTierID1 + '\nCardID: ' + cardID1 + '\nPrintNumber: ' + printNumber1);
+
+   // Find the values of card 2
+      var champion2 = card2.find(card => card.category === 'champion')?.value;
+       var skillTierID2 = card2.find(card => card.category === 'skillTier')?.value;
+       var cardID2 = card2.find(card => card.category === 'ID')?.value;
+       var printNumber2 = card2.find(card => card.category === 'printNumber')?.value;
+
+    console.log(`\nCard 2 values: \nChampionID: ` + champion2 + '\nSkillTierID: ' + skillTierID2 + '\nCardID: ' + cardID2 + '\nPrintNumber: ' + printNumber2);
+    message.channel.send(`\nCard 2 values: \nChampionID: ` + champion2 + '\nSkillTierID: ' + skillTierID2 + '\nCardID: ' + cardID2 + '\nPrintNumber: ' + printNumber2);    
 
     //TESTING: STANDARD DEFAULT LINKS THAT SHOULD BE REMOVED IN THE FUTURE, HARD CODED
     var test_url_1 = "https://cdn.discordapp.com";
