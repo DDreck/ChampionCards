@@ -46,7 +46,7 @@ client.on("messageCreate", async (message) => {
     message.channel.send(`Card 1 values: \nChampionID: ` + champion1 + '\nSkillTierID: ' + skillTierID1 + '\nCardID: ' + cardID1 + '\nPrintNumber: ' + printNumber1);
 
    // Find the values of card 2
-      var champion2 = card2.find(card => card.category === 'champion')?.value;
+       var champion2 = card2.find(card => card.category === 'champion')?.value;
        var skillTierID2 = card2.find(card => card.category === 'skillTier')?.value;
        var cardID2 = card2.find(card => card.category === 'ID')?.value;
        var printNumber2 = card2.find(card => card.category === 'printNumber')?.value;
