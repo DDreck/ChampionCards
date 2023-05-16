@@ -30,59 +30,90 @@ client.on("messageCreate", async (message) => {
 
 
     //sends request to cardgeneration.js to generate 2 cards
-    const { card1, card2 } = cards.generateRandomCards();
+    const { card1, card2, card3 } = cards.generateRandomCards();
 
-    //logs the 2 cards generated
+    //logs the 3 cards generated
     console.log(`Card 1: ${JSON.stringify(card1)}`);
     console.log(`Card 2: ${JSON.stringify(card2)}`);
+    console.log(`Card 3: ${JSON.stringify(card3)}`);
 
    // Find the values of card 1
       var champion1 = card1.find(card => card.category === 'champion')?.value;
       var championName1 = card1.find(card => card.category === 'champion')?.championName;
       var splashArt1 = card1.find(card => card.category === 'champion')?.splashArt;
+      var rankThumbnail1 = card1.find(card => card.category === 'skillTier')?.thumbnail;
+      var rank1 = card1.find(card => card.category === 'skillTier')?.rank;
       var skillTierID1 = card1.find(card => card.category === 'skillTier')?.value;
       var cardID1 = card1.find(card => card.category === 'ID')?.value;
       var printNumber1 = card1.find(card => card.category === 'printNumber')?.value;
 
+    //debug
+    //console.log(`Card 1 values: \nChampionID: ` + champion1 + '\nSkillTierID: ' + skillTierID1 + '\nCardID: ' + cardID1 + '\nPrintNumber: ' + printNumber1);
+    //message.channel.send(`Card 1 values: \nChampionID: ` + champion1 + '\nSkillTierID: ' + skillTierID1 + '\nCardID: ' + cardID1 + '\nPrintNumber: ' + printNumber1);
 
-    console.log(`Card 1 values: \nChampionID: ` + champion1 + '\nSkillTierID: ' + skillTierID1 + '\nCardID: ' + cardID1 + '\nPrintNumber: ' + printNumber1);
-    message.channel.send(`Card 1 values: \nChampionID: ` + champion1 + '\nSkillTierID: ' + skillTierID1 + '\nCardID: ' + cardID1 + '\nPrintNumber: ' + printNumber1);
-
-   // Find the values of card 1
+   // Find the values of card 2
       var champion2 = card2.find(card => card.category === 'champion')?.value;
       var championName2 = card2.find(card => card.category === 'champion')?.championName;
       var splashArt2 = card2.find(card => card.category === 'champion')?.splashArt;
+      var rankThumbnail2 = card2.find(card => card.category === 'skillTier')?.thumbnail;
+      var rank2 = card2.find(card => card.category === 'skillTier')?.rank;
       var skillTierID2 = card2.find(card => card.category === 'skillTier')?.value;
       var cardID2 = card2.find(card => card.category === 'ID')?.value;
       var printNumber2 = card2.find(card => card.category === 'printNumber')?.value;
 
+    //debug
+    //console.log(`\nCard 2 values: \nChampionID: ` + champion2 + '\nSkillTierID: ' + skillTierID2 + '\nCardID: ' + cardID2 + '\nPrintNumber: ' + printNumber2);
+    //message.channel.send(`\nCard 2 values: \nChampionID: ` + champion2 + '\nSkillTierID: ' + skillTierID2 + '\nCardID: ' + cardID2 + '\nPrintNumber: ' + printNumber2);    
 
-    console.log(`\nCard 2 values: \nChampionID: ` + champion2 + '\nSkillTierID: ' + skillTierID2 + '\nCardID: ' + cardID2 + '\nPrintNumber: ' + printNumber2);
-    message.channel.send(`\nCard 2 values: \nChampionID: ` + champion2 + '\nSkillTierID: ' + skillTierID2 + '\nCardID: ' + cardID2 + '\nPrintNumber: ' + printNumber2);    
+   // Find the values of card 3
+      var champion3 = card3.find(card => card.category === 'champion')?.value;
+      var championName3 = card3.find(card => card.category === 'champion')?.championName;
+      var splashArt3 = card3.find(card => card.category === 'champion')?.splashArt;
+      var rankThumbnail3 = card3.find(card => card.category === 'skillTier')?.thumbnail;
+      var rank3 = card3.find(card => card.category === 'skillTier')?.rank;
+      var skillTierID3 = card3.find(card => card.category === 'skillTier')?.value;
+      var cardID3 = card3.find(card => card.category === 'ID')?.value;
+      var printNumber3 = card3.find(card => card.category === 'printNumber')?.value;    
 
-    //TESTING: STANDARD DEFAULT LINKS THAT SHOULD BE REMOVED IN THE FUTURE, HARD CODED
-    var test_url_1 = "https://cdn.discordapp.com";
-    var test_image_url_1 = "https://cdn.discordapp.com/attachments/1106538960311828574/1106644762091585628/image.png";
-    var test_image_url_2 = "https://cdn.discordapp.com/attachments/1106538960311828574/1106644803715878923/image.png";
+    //debug
+    //console.log(`\nCard 3 values: \nChampionID: ` + champion3 + '\nSkillTierID: ' + skillTierID3 + '\nCardID: ' + cardID3 + '\nPrintNumber: ' + printNumber3);
+    //message.channel.send(`\nCard 3 values: \nChampionID: ` + champion3 + '\nSkillTierID: ' + skillTierID3 + '\nCardID: ' + cardID3 + '\nPrintNumber: ' + printNumber3); 
+
+    //image file paths
+
     var card1Image = './Champion Splashart/OriginalSplasharts webp/' + splashArt1;
     var card2Image = './Champion Splashart/OriginalSplasharts webp/' + splashArt2;
+    var card3Image = './Champion Splashart/OriginalSplasharts webp/' + splashArt3;
+    var card1Thumbnail = './Champion Splashart/LeagueTierThumbnails/' + rankThumbnail1;
+    var card2Thumbnail = './Champion Splashart/LeagueTierThumbnails/' + rankThumbnail2;
+    var card3Thumbnail = './Champion Splashart/LeagueTierThumbnails/' + rankThumbnail3;
+
+    //build attachments for 3 embeds
 
     const splashart1File = new AttachmentBuilder(card1Image);
     const splashart2File = new AttachmentBuilder(card2Image);
+    const splashart3File = new AttachmentBuilder(card3Image);
+    const thumbnailFile1 = new AttachmentBuilder(card1Thumbnail);
+    const thumbnailFile2 = new AttachmentBuilder(card2Thumbnail);
+    const thumbnailFile3 = new AttachmentBuilder(card3Thumbnail);
 
-    let embed1 = new EmbedBuilder().setTitle(championName1).setImage('attachment://' + splashArt1).setColor("Red");
-    let embed2 = new EmbedBuilder().setTitle(championName2).setImage('attachment://' + splashArt2).setColor("Red");
-    const sentMessage = await message.channel.send({ embeds: [embed1, embed2], files: [splashart1File, splashart2File] });
+    //build embeds for all 3 cards
+
+    let embed1 = new EmbedBuilder().setTitle(championName1).setImage('attachment://' + splashArt1).setColor("Red").setThumbnail('attachment://' + rank1).setFooter({ text: `ID: ${cardID1}   Print: ${printNumber1}` });
+    let embed2 = new EmbedBuilder().setTitle(championName2).setImage('attachment://' + splashArt2).setColor("Red").setThumbnail('attachment://' + rank2).setFooter({ text: `ID: ${cardID2}   Print: ${printNumber2}` });
+    let embed3 = new EmbedBuilder().setTitle(championName3).setImage('attachment://' + splashArt3).setColor("Red").setThumbnail('attachment://' + rank3).setFooter({ text: `ID: ${cardID3}   Print: ${printNumber3}` });
+    const sentMessage = await message.channel.send({ embeds: [embed1, embed2, embed3], files: [splashart1File, splashart2File, splashart3File, thumbnailFile1, thumbnailFile2, thumbnailFile3] });
 
 
     // React to it
 
     await sentMessage.react("1️⃣");
     await sentMessage.react("2️⃣");
+    await sentMessage.react("3️⃣");
 
     // Create the collector filter TODO FIX BUG THAT ALLOWS BOT TO COLLECT OWN REACTION
     const collectorFilter = (reaction, user) => {
-      return ['1️⃣', '2️⃣'].includes(reaction.emoji.name) && !user.bot && user.id != '1106538341194797066';
+      return ['1️⃣', '2️⃣', '3️⃣'].includes(reaction.emoji.name) && !user.bot && user.id != '1106538341194797066';
     };
 
     // Create the collector 
@@ -109,6 +140,8 @@ client.on("messageCreate", async (message) => {
         case '2️⃣':
             selection = 2;
             break;
+        case '3️⃣':
+            selection = 3;
         default:
             selection = null;
     }
