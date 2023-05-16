@@ -1,7 +1,7 @@
 require("dotenv").config();
 const { error } = require("console");
 const Discord = require("discord.js");
-const { EmbedBuilder } = require("discord.js");
+const { EmbedBuilder, AttachmentBuilder } = require("discord.js");
 const { Client, GatewayIntentBits } = require("discord.js");
 const client = new Client({
   intents: [
@@ -38,18 +38,24 @@ client.on("messageCreate", async (message) => {
 
    // Find the values of card 1
       var champion1 = card1.find(card => card.category === 'champion')?.value;
+      var championName1 = card1.find(card => card.category === 'champion')?.championName;
+      var splashArt1 = card1.find(card => card.category === 'champion')?.splashArt;
       var skillTierID1 = card1.find(card => card.category === 'skillTier')?.value;
       var cardID1 = card1.find(card => card.category === 'ID')?.value;
       var printNumber1 = card1.find(card => card.category === 'printNumber')?.value;
 
+
     console.log(`Card 1 values: \nChampionID: ` + champion1 + '\nSkillTierID: ' + skillTierID1 + '\nCardID: ' + cardID1 + '\nPrintNumber: ' + printNumber1);
     message.channel.send(`Card 1 values: \nChampionID: ` + champion1 + '\nSkillTierID: ' + skillTierID1 + '\nCardID: ' + cardID1 + '\nPrintNumber: ' + printNumber1);
 
-   // Find the values of card 2
-       var champion2 = card2.find(card => card.category === 'champion')?.value;
-       var skillTierID2 = card2.find(card => card.category === 'skillTier')?.value;
-       var cardID2 = card2.find(card => card.category === 'ID')?.value;
-       var printNumber2 = card2.find(card => card.category === 'printNumber')?.value;
+   // Find the values of card 1
+      var champion2 = card2.find(card => card.category === 'champion')?.value;
+      var championName2 = card2.find(card => card.category === 'champion')?.championName;
+      var splashArt2 = card2.find(card => card.category === 'champion')?.splashArt;
+      var skillTierID2 = card2.find(card => card.category === 'skillTier')?.value;
+      var cardID2 = card2.find(card => card.category === 'ID')?.value;
+      var printNumber2 = card2.find(card => card.category === 'printNumber')?.value;
+
 
     console.log(`\nCard 2 values: \nChampionID: ` + champion2 + '\nSkillTierID: ' + skillTierID2 + '\nCardID: ' + cardID2 + '\nPrintNumber: ' + printNumber2);
     message.channel.send(`\nCard 2 values: \nChampionID: ` + champion2 + '\nSkillTierID: ' + skillTierID2 + '\nCardID: ' + cardID2 + '\nPrintNumber: ' + printNumber2);    
@@ -58,12 +64,15 @@ client.on("messageCreate", async (message) => {
     var test_url_1 = "https://cdn.discordapp.com";
     var test_image_url_1 = "https://cdn.discordapp.com/attachments/1106538960311828574/1106644762091585628/image.png";
     var test_image_url_2 = "https://cdn.discordapp.com/attachments/1106538960311828574/1106644803715878923/image.png";
+    var card1Image = './Champion Splashart/OriginalSplasharts webp/' + splashArt1;
+    var card2Image = './Champion Splashart/OriginalSplasharts webp/' + splashArt2;
 
-    //test create embed with multiple images
-    let embed1 = new EmbedBuilder().setTitle('Choose a Card').setColor("Red").setURL(test_url_1).setImage(test_image_url_1)
-    let embed2 = new EmbedBuilder().setURL(test_url_1).setImage(test_image_url_2)
+    const splashart1File = new AttachmentBuilder(card1Image);
+    const splashart2File = new AttachmentBuilder(card2Image);
 
-    const sentMessage = await message.channel.send({ embeds: [embed1, embed2] });
+    let embed1 = new EmbedBuilder().setTitle(championName1).setImage('attachment://' + splashArt1).setColor("Red");
+    let embed2 = new EmbedBuilder().setTitle(championName2).setImage('attachment://' + splashArt2).setColor("Red");
+    const sentMessage = await message.channel.send({ embeds: [embed1, embed2], files: [splashart1File, splashart2File] });
 
 
     // React to it
