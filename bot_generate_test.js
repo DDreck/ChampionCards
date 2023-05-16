@@ -99,9 +99,28 @@ client.on("messageCreate", async (message) => {
 
     //build embeds for all 3 cards
 
-    let embed1 = new EmbedBuilder().setTitle(championName1).setImage('attachment://' + splashArt1).setColor("Red").setThumbnail('attachment://' + rank1).setFooter({ text: `ID: ${cardID1}   Print: ${printNumber1}` });
-    let embed2 = new EmbedBuilder().setTitle(championName2).setImage('attachment://' + splashArt2).setColor("Red").setThumbnail('attachment://' + rank2).setFooter({ text: `ID: ${cardID2}   Print: ${printNumber2}` });
-    let embed3 = new EmbedBuilder().setTitle(championName3).setImage('attachment://' + splashArt3).setColor("Red").setThumbnail('attachment://' + rank3).setFooter({ text: `ID: ${cardID3}   Print: ${printNumber3}` });
+    let embed1 = new EmbedBuilder()
+    .setTitle(championName1)
+    .setImage('attachment://' + splashArt1)
+    .setColor("Red")
+    .setFooter({ text: `ID: ${cardID1}   Print: ${printNumber1}` });
+    
+    let embed2 = new EmbedBuilder()
+    .setTitle(championName2)
+    .setImage('attachment://' + splashArt2)
+    .setColor("Red")
+    .setFooter({ text: `ID: ${cardID2}   Print: ${printNumber2}` });
+    
+    let embed3 = new EmbedBuilder()
+    .setTitle(championName3)
+    .setImage('attachment://' + splashArt3)
+    .setColor("Red")
+    .setFooter({ text: `ID: ${cardID3}   Print: ${printNumber3}` });
+  
+     embed1.setThumbnail('attachment://' + rankThumbnail1);
+     embed2.setThumbnail('attachment://' + rankThumbnail2);
+     embed3.setThumbnail('attachment://' + rankThumbnail3);
+  
     const sentMessage = await message.channel.send({ embeds: [embed1, embed2, embed3], files: [splashart1File, splashart2File, splashart3File, thumbnailFile1, thumbnailFile2, thumbnailFile3] });
 
 
