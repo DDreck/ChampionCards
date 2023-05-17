@@ -130,17 +130,16 @@ client.on("messageCreate", async (message) => {
     await sentMessage.react("2️⃣");
     await sentMessage.react("3️⃣");
 
-    // Create the collector filter TODO FIX BUG THAT ALLOWS BOT TO COLLECT OWN REACTION
-    const collectorFilter = (reaction, user) => {
-      return ['1️⃣', '2️⃣', '3️⃣'].includes(reaction.emoji.name) && !user.bot && user.id != '1106538341194797066';
-    };
+    // Create the collector filter
+    const collectorFilter = (reaction, user) => ['1️⃣', '2️⃣', '3️⃣'].includes(reaction.emoji.name) && !user.bot;
 
-    // Create the collector 
-    const collector = sentMessage.createReactionCollector({
-    collectorFilter,
+    //set timeout to try to fix bug that is letting bot collect own reactions
+
+    setTimeout(() => {
+    // Create the collector TODO VERY BUGGED RN WILL LET U COLLECT ANY EMOJI 
+    const collector = sentMessage.createReactionCollector(collectorFilter, {
       time: 15000,
       max: 1
-      
     });
    
 
@@ -150,6 +149,8 @@ client.on("messageCreate", async (message) => {
     // Display confirmation message here
     message.channel.send(`${user} Grabbed Card ${reaction.emoji.name} !`)
     
+    
+
     //convert emoji to integer "selection"
     var selection;
     switch( reaction.emoji.name ) {
@@ -180,7 +181,7 @@ client.on("messageCreate", async (message) => {
         console.log(`Collected ${collected.size} items`);
     });
 
-    
+  }, 500); //500 miliseconds timeout for the collector
   }
 });
 
