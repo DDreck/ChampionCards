@@ -1,6 +1,8 @@
 require("dotenv").config();
 const { error } = require("console");
 const Discord = require("discord.js");
+const Canvas = require('canvas');
+const path = require('path');
 const { EmbedBuilder, AttachmentBuilder } = require("discord.js");
 const { Client, GatewayIntentBits } = require("discord.js");
 const client = new Client({
@@ -13,7 +15,7 @@ const client = new Client({
   ],
 });
 const cards = require('/Champion Cards Bot/cardgeneration.js');
-
+const { imagegenerate } = require('/Champion Cards Bot/imagegeneration.js');
 
 client.once("ready", () => {
   console.log("BOT IS ONLINE"); //message when bot is online
@@ -22,6 +24,9 @@ client.on("error", (error) => {
   console.log(error);
 });
 client.on("messageCreate", async (message) => {
+  if (message.content === '!test') {
+    imagegenerate(message);
+  }
   if (message.content === "!cd") {
 
     //TODO add timer for each user before they can grab or drop cards
