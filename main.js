@@ -2,9 +2,9 @@ require("dotenv").config();
 const { error } = require("console");
 const Discord = require("discord.js");
 const { Client, GatewayIntentBits } = require("discord.js");
-const cards = require('/Champion Cards Bot/cardgeneration.js');
 const { imagegenerate } = require('/Champion Cards Bot/imagegeneration.js');
 const cardDrop = require('./card_drop.js');
+
 
 const client = new Client({
   intents: [
@@ -28,6 +28,10 @@ client.on("messageCreate", async (message) => {
   }
   if (message.content === "!cd") {
     await cardDrop(message);
+  }
+  if (message.content === "!testcd") {
+    console.log(`begin test`);
+    await testcardDrop(message);
   }
 });
 

@@ -1,108 +1,29 @@
 const cards = require('/Champion Cards Bot/cardgeneration.js');
 const { EmbedBuilder, AttachmentBuilder } = require("discord.js");
+const { imagegenerate } = require('/Champion Cards Bot/imagegeneration.js');
+const { combineImages } = require('/Champion Cards Bot/combineimages.js');
 
 
 async function cardDrop(message){
   
     //TODO add timer for each user before they can grab or drop cards
 
-    //TODO send http request to generate 3 cards
 
 
-    //sends request to cardgeneration.js to generate 2 cards
+    //sends request to cardgeneration.js to generate 3 cards
     const { card1, card2, card3 } = cards.generateRandomCards();
-
-    //logs the 3 cards generated
-    console.log(`Card 1: ${JSON.stringify(card1)}`);
-    console.log(`Card 2: ${JSON.stringify(card2)}`);
-    console.log(`Card 3: ${JSON.stringify(card3)}`);
-
-   // Find the values of card 1
-      var champion1 = card1.find(card => card.category === 'champion')?.value;
-      var championName1 = card1.find(card => card.category === 'champion')?.championName;
-      var splashArt1 = card1.find(card => card.category === 'champion')?.splashArt;
-      var rankThumbnail1 = card1.find(card => card.category === 'skillTier')?.thumbnail;
-      var rank1 = card1.find(card => card.category === 'skillTier')?.rank;
-      var skillTierID1 = card1.find(card => card.category === 'skillTier')?.value;
-      var cardID1 = card1.find(card => card.category === 'ID')?.value;
-      var printNumber1 = card1.find(card => card.category === 'printNumber')?.value;
-
-    //debug
-    //console.log(`Card 1 values: \nChampionID: ` + champion1 + '\nSkillTierID: ' + skillTierID1 + '\nCardID: ' + cardID1 + '\nPrintNumber: ' + printNumber1);
-    //message.channel.send(`Card 1 values: \nChampionID: ` + champion1 + '\nSkillTierID: ' + skillTierID1 + '\nCardID: ' + cardID1 + '\nPrintNumber: ' + printNumber1);
-
-   // Find the values of card 2
-      var champion2 = card2.find(card => card.category === 'champion')?.value;
-      var championName2 = card2.find(card => card.category === 'champion')?.championName;
-      var splashArt2 = card2.find(card => card.category === 'champion')?.splashArt;
-      var rankThumbnail2 = card2.find(card => card.category === 'skillTier')?.thumbnail;
-      var rank2 = card2.find(card => card.category === 'skillTier')?.rank;
-      var skillTierID2 = card2.find(card => card.category === 'skillTier')?.value;
-      var cardID2 = card2.find(card => card.category === 'ID')?.value;
-      var printNumber2 = card2.find(card => card.category === 'printNumber')?.value;
-
-    //debug
-    //console.log(`\nCard 2 values: \nChampionID: ` + champion2 + '\nSkillTierID: ' + skillTierID2 + '\nCardID: ' + cardID2 + '\nPrintNumber: ' + printNumber2);
-    //message.channel.send(`\nCard 2 values: \nChampionID: ` + champion2 + '\nSkillTierID: ' + skillTierID2 + '\nCardID: ' + cardID2 + '\nPrintNumber: ' + printNumber2);    
-
-   // Find the values of card 3
-      var champion3 = card3.find(card => card.category === 'champion')?.value;
-      var championName3 = card3.find(card => card.category === 'champion')?.championName;
-      var splashArt3 = card3.find(card => card.category === 'champion')?.splashArt;
-      var rankThumbnail3 = card3.find(card => card.category === 'skillTier')?.thumbnail;
-      var rank3 = card3.find(card => card.category === 'skillTier')?.rank;
-      var skillTierID3 = card3.find(card => card.category === 'skillTier')?.value;
-      var cardID3 = card3.find(card => card.category === 'ID')?.value;
-      var printNumber3 = card3.find(card => card.category === 'printNumber')?.value;    
-
-    //debug
-    //console.log(`\nCard 3 values: \nChampionID: ` + champion3 + '\nSkillTierID: ' + skillTierID3 + '\nCardID: ' + cardID3 + '\nPrintNumber: ' + printNumber3);
-    //message.channel.send(`\nCard 3 values: \nChampionID: ` + champion3 + '\nSkillTierID: ' + skillTierID3 + '\nCardID: ' + cardID3 + '\nPrintNumber: ' + printNumber3); 
 
     //image file paths
 
-    var card1Image = './Champion Splashart/OriginalSplasharts webp/' + splashArt1;
-    var card2Image = './Champion Splashart/OriginalSplasharts webp/' + splashArt2;
-    var card3Image = './Champion Splashart/OriginalSplasharts webp/' + splashArt3;
-    var card1Thumbnail = './Champion Splashart/LeagueTierThumbnails/' + rankThumbnail1;
-    var card2Thumbnail = './Champion Splashart/LeagueTierThumbnails/' + rankThumbnail2;
-    var card3Thumbnail = './Champion Splashart/LeagueTierThumbnails/' + rankThumbnail3;
+    var card1Image = await imagegenerate(card1);
+    var card2Image = await imagegenerate(card2);
+    var card3Image = await imagegenerate(card3);
 
-    //build attachments for 3 embeds
+    //combine the images and send the combined image
 
-    const splashart1File = new AttachmentBuilder(card1Image);
-    const splashart2File = new AttachmentBuilder(card2Image);
-    const splashart3File = new AttachmentBuilder(card3Image);
-    const thumbnailFile1 = new AttachmentBuilder(card1Thumbnail);
-    const thumbnailFile2 = new AttachmentBuilder(card2Thumbnail);
-    const thumbnailFile3 = new AttachmentBuilder(card3Thumbnail);
-
-    //build embeds for all 3 cards
-
-    let embed1 = new EmbedBuilder()
-    .setTitle(championName1)
-    .setImage('attachment://' + splashArt1)
-    .setColor("Red")
-    .setFooter({ text: `ID: ${cardID1}   Print: ${printNumber1}` });
-    
-    let embed2 = new EmbedBuilder()
-    .setTitle(championName2)
-    .setImage('attachment://' + splashArt2)
-    .setColor("Red")
-    .setFooter({ text: `ID: ${cardID2}   Print: ${printNumber2}` });
-    
-    let embed3 = new EmbedBuilder()
-    .setTitle(championName3)
-    .setImage('attachment://' + splashArt3)
-    .setColor("Red")
-    .setFooter({ text: `ID: ${cardID3}   Print: ${printNumber3}` });
-  
-     embed1.setThumbnail('attachment://' + rankThumbnail1);
-     embed2.setThumbnail('attachment://' + rankThumbnail2);
-     embed3.setThumbnail('attachment://' + rankThumbnail3);
-  
-    const sentMessage = await message.channel.send({ embeds: [embed1, embed2, embed3], files: [splashart1File, splashart2File, splashart3File, thumbnailFile1, thumbnailFile2, thumbnailFile3] });
-
+    var combinedImage = await combineImages(card1Image, card2Image, card3Image);
+    const combinedImageFile = new AttachmentBuilder(combinedImage, 'combined.png');
+    const sentMessage = await message.channel.send({ files: [combinedImageFile] });
 
     // React to it
 

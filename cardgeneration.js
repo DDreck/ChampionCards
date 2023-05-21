@@ -6,8 +6,8 @@ function generateRandomCard() {
   const skillTierValue = Math.floor(Math.random() * 9) + 1; 
   const championName = championNames[championValue];
   const championRank = ranks[skillTierValue];
-  card.push({ category: 'champion', value: championValue, championName: championName, splashArt: `${championName}.webp` });
-  card.push({ category: 'skillTier', value: skillTierValue, rank: championRank, thumbnail: `${championRank}.webp`});
+  card.push({ category: 'champion', value: championValue, championName: championName, splashArt: `${championName}.png` });
+  card.push({ category: 'skillTier', value: skillTierValue, rank: championRank, thumbnail: `${championRank}_frame.png`});
   card.push({ category: 'ID', value: 111 });
   card.push({ category: 'printNumber', value: 111 });
   return card;
