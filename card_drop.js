@@ -1,34 +1,9 @@
-require("dotenv").config();
-const { error } = require("console");
-const Discord = require("discord.js");
-const Canvas = require('canvas');
-const path = require('path');
-const { EmbedBuilder, AttachmentBuilder } = require("discord.js");
-const { Client, GatewayIntentBits } = require("discord.js");
-const client = new Client({
-  intents: [
-    GatewayIntentBits.Guilds,
-    GatewayIntentBits.GuildMessages,
-    GatewayIntentBits.GuildMessageReactions,
-    GatewayIntentBits.MessageContent,
-    GatewayIntentBits.GuildMembers,
-  ],
-});
 const cards = require('/Champion Cards Bot/cardgeneration.js');
-const { imagegenerate } = require('/Champion Cards Bot/imagegeneration.js');
+const { EmbedBuilder, AttachmentBuilder } = require("discord.js");
 
-client.once("ready", () => {
-  console.log("BOT IS ONLINE"); //message when bot is online
-});
-client.on("error", (error) => {
-  console.log(error);
-});
-client.on("messageCreate", async (message) => {
-  if (message.content === '!test') {
-    imagegenerate(message);
-  }
-  if (message.content === "!cd") {
 
+async function cardDrop(message){
+  
     //TODO add timer for each user before they can grab or drop cards
 
     //TODO send http request to generate 3 cards
@@ -186,8 +161,10 @@ client.on("messageCreate", async (message) => {
         console.log(`Collected ${collected.size} items`);
     });
 
-  }, 500); //500 miliseconds timeout for the collector
-  }
-});
+  }, 500); //500 miliseconds timeout for the collector  
 
-client.login(process.env.TOKEN);
+
+
+}
+
+module.exports = cardDrop;
