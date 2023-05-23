@@ -1,4 +1,17 @@
-  
+const skillTierDistribution = [
+  ...Array(Math.round(650)).fill('Iron'), 
+  ...Array(Math.round(2500)).fill('Bronze'), 
+  ...Array(Math.round(3000)).fill('Silver'), 
+  ...Array(Math.round(2300)).fill('Gold'), 
+  ...Array(Math.round(1000)).fill('Platinum'), 
+  ...Array(Math.round(290)).fill('Diamond'), 
+  ...Array(Math.round(50)).fill('Master'), 
+  ...Array(Math.round(5.6)).fill('Grandmaster'), 
+  ...Array(Math.round(2.4)).fill('Challenger')
+];
+ 
+
+
   const ranks = {
     1: 'Iron',
     2: 'Bronze',
@@ -177,4 +190,4 @@
     163: 'Zyra',
   };
 
-  module.exports = { ranks, championNames };
+  module.exports = { ranks, championNames, skillTierDistribution };
