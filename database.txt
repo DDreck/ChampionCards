@@ -1,3 +1,5 @@
+cqlsh
+
 CREATE TABLE IF NOT EXISTS championcards.cards (
   ID TEXT PRIMARY KEY,
   championValue INT,
@@ -14,6 +16,10 @@ CREATE TABLE IF NOT EXISTS championcards.printnumbers (
   championValue INT PRIMARY KEY,
   lastPrintNumber INT
 );
+
+SELECT * from cards;
+
+SELECT * from printnumbers;
 
 
 INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (1, 0);
