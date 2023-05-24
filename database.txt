@@ -1,0 +1,182 @@
+CREATE TABLE IF NOT EXISTS championcards.cards (
+  ID TEXT PRIMARY KEY,
+  championValue INT,
+  championName TEXT,
+  splashArt TEXT,
+  skillTierValue INT,
+  rank TEXT,
+  thumbnail TEXT,
+  printNumber INT,
+  userID BIGINT
+);
+
+CREATE TABLE IF NOT EXISTS championcards.printnumbers (
+  championValue INT PRIMARY KEY,
+  lastPrintNumber INT
+);
+
+
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (1, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (2, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (3, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (4, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (5, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (6, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (7, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (8, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (9, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (10, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (11, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (12, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (13, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (14, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (15, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (16, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (17, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (18, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (19, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (20, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (21, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (22, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (23, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (24, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (25, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (26, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (27, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (28, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (29, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (30, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (31, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (32, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (33, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (34, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (35, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (36, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (37, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (38, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (39, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (40, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (41, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (42, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (43, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (44, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (45, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (46, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (47, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (48, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (49, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (50, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (51, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (52, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (53, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (54, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (55, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (56, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (57, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (58, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (59, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (60, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (61, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (62, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (63, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (64, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (65, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (66, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (67, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (68, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (69, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (70, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (71, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (72, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (73, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (74, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (75, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (76, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (77, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (78, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (79, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (80, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (81, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (82, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (83, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (84, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (85, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (86, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (87, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (88, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (89, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (90, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (91, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (92, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (93, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (94, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (95, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (96, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (97, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (98, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (99, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (100, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (101, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (102, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (103, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (104, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (105, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (106, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (107, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (108, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (109, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (110, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (111, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (112, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (113, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (114, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (115, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (116, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (117, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (118, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (119, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (120, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (121, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (122, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (123, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (124, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (125, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (126, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (127, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (128, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (129, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (130, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (131, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (132, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (133, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (134, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (135, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (136, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (137, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (138, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (139, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (140, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (141, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (142, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (143, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (144, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (145, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (146, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (147, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (148, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (149, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (150, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (151, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (152, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (153, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (154, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (155, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (156, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (157, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (158, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (159, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (160, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (161, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (162, 0);
+INSERT INTO printnumbers (championValue, lastPrintNumber) VALUES (163, 0);
+

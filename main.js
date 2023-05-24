@@ -6,6 +6,8 @@ const { imagegenerate } = require('/Champion Cards Bot/imagegeneration.js');
 const cardDrop = require('./card_drop.js');
 
 
+
+
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,

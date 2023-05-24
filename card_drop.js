@@ -2,6 +2,7 @@ const cards = require('/Champion Cards Bot/cardgeneration.js');
 const { EmbedBuilder, AttachmentBuilder } = require("discord.js");
 const { imagegenerate } = require('/Champion Cards Bot/imagegeneration.js');
 const { combineImages } = require('/Champion Cards Bot/combineimages.js');
+const { storeCard } = require('./card_store.js');
 
 
 async function cardDrop(message){
@@ -11,8 +12,11 @@ async function cardDrop(message){
 
 
     //sends request to cardgeneration.js to generate 3 cards
-    const { card1, card2, card3 } = cards.generateRandomCards();
+    const { card1, card2, card3 } = await cards.generateRandomCards();
 
+    console.log(card1);
+    console.log(card2);
+    console.log(card3);
     //image file paths
 
     var card1Image = await imagegenerate(card1);
@@ -44,36 +48,35 @@ async function cardDrop(message){
     });
    
 
-    // Log the collected reactions
-    collector.on("collect", (reaction, user) => {
-      console.log(`Collected ${reaction.emoji.name}  from ${user.tag}`);
+    // enable collector
+    collector.on("collect", async (reaction, user) => {
+
+    //log collection in console
+    console.log(`Collected ${reaction.emoji.name}  from ${user.tag}`);
+
+     //convert emoji to card selection
+     let selectedCard = null;
+     
+     switch( reaction.emoji.name ) {
+         case '1️⃣':
+             selectedCard = card1;
+             break;
+         case '2️⃣':
+             selectedCard = card2;
+             break;
+         case '3️⃣':
+             selectedCard = card3;
+             break;
+         default:
+             selectedCard = null;
+     }
+
+    //store card in database
+    await storeCard(selectedCard, user.id);
+      
     // Display confirmation message here
     message.channel.send(`${user} Grabbed Card ${reaction.emoji.name} !`)
     
-    
-
-    //convert emoji to integer "selection"
-    var selection;
-    switch( reaction.emoji.name ) {
-        case '1️⃣':
-            selection = 1;
-            break;
-        case '2️⃣':
-            selection = 2;
-            break;
-        case '3️⃣':
-            selection = 3;
-        default:
-            selection = null;
-    }
-
-    //store selection and user id to array
-    var selectionArray = [user.id, selection]
-
-    //log selectionArray
-    console.log(selectionArray);
-
-    //TODO: send variable selectionArray to function to give card to player
 
     });
 
